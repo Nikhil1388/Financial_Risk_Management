@@ -271,3 +271,6 @@ sum(data_1[,1]>data_1[,2])
 #at which observed losses have breached the losses as predicted by the GARCH model at 95% Confidence Level.
 #So, GARCH model is really a good estimator of VaR and ES which takes Volatility Clustering into account and provides 
 #much accurate results in comparison to Normal Distributions.
+
+#Similar Calculations can be performed by setting alpha = 0.1 or 0.01 i.e., calculating 0.1th or 0.01th quantile
+#for estimating VaR and ES at 90% or 99% confidence level respectively. 
