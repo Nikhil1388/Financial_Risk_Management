@@ -98,10 +98,13 @@ jarque.test(rvec)
 #JB = 27855, p-value < 2.2e-16
 #alternative hypothesis: greater
 
-#Since the skewness is negative which means the data is left skewed, as well as the kurtosis is also very big whereas the skewness for normal distribution is 0 whereas the coefficient of kurtosis is 3 and the JB value is also quite big, which shows that the Normal Distribution is not a perfect fit for the data.
+#Since the skewness is negative which means the data is left skewed, as well as the kurtosis is also very big whereas the skewness for normal distribution is 0 whereas the 
+#coefficient of kurtosis is 3 and the JB value is also quite big, which shows that the Normal Distribution is not a perfect fit for the data.
 
 library(MASS)
-# We know that standard normal distribution is a specific case of Student-T Distribution when the degree of freedoms becomes infinite. So, instead of using the Normal Distribution, using rescaled Student-T Distribution which can manage leptokurtosis because of adjustable degrees of freedom parameter.
+# We know that standard normal distribution is a specific case of Student-T Distribution when the degree of freedoms becomes infinite. So, instead of using the Normal 
+# Distribution, using rescaled Student-T Distribution which can manage leptokurtosis because of adjustable degrees of freedom parameter.
+
 t.fit<-fitdistr(rvec,"t")
 #Making Student-T Distribution as per our data.
 library(metRology)
@@ -172,7 +175,8 @@ acf(logret)
 #So, it makes sense to look for auto correlation in absolute log returns data.
 acf(abs(logret))
 
-#Here, we can observe that the correlation coefficients are significant which implies that there can be significant amount of Volatility Clustering in our data. Consequently, to deal with such circumstances, GARCH models are used in practice in Risk Management which account for "Volatility Clustering".
+#Here, we can observe that the correlation coefficients are significant which implies that there can be significant amount of Volatility Clustering in our data. Consequently,
+# to deal with such circumstances, GARCH models are used in practice in Risk Management which account for "Volatility Clustering".
 
 library(rugarch)
 #Fitting the Specifications we want in our GARCH model in uspec such as distribution model as Student-T Distribution,etc. Basically, we are using GARCH-(1,1)-t Model here.
@@ -215,7 +219,8 @@ round(ES8,6)
 round((exp(VaR8)-1),6)
 #-0.014363 
 
-# Let us assume an investor invests Rs.10,00,000 in a NIFTY50 Index Fund, so according to historical GARCH predicted VaR, the maximum amount that the investor can lose on the next trading session within 95% Confidence Level = 10,00,000 * -0.014363 = 14363/-Rs. 
+# Let us assume an investor invests Rs.10,00,000 in a NIFTY50 Index Fund, so according to historical GARCH predicted VaR, the maximum amount that the investor can lose  
+# on the next trading session within 95% Confidence Level = 10,00,000 * -0.014363 = 14363/-Rs.
 
 #Preparing VaR data from 2021-01-01 upto 2021-11-04 using Ugarchroll function:-
 n2020<-length(logret["2007-09-18/2020-12-31"])
@@ -255,4 +260,6 @@ length(data_1$res)
 sum(data_1[,1]>data_1[,2])
 #  9
 
-#So, we can observe that out of 208 trading days from "2021-01-01" to "2021-11-04", there are only 9 trading days(4.32%) at which observed losses have breached the losses as predicted by the GARCH model at 95% Confidence Level. So, GARCH model is really a good estimator of VaR and ES which takes Volatility Clustering into account and provides much accurate results in comparison to Normal Distributions.
+# So, we can observe that out of 208 trading days from "2021-01-01" to "2021-11-04", there are only 9 trading days(4.32%) at which observed losses have breached the losses 
+# as predicted by the GARCH model at 95% Confidence Level. So, GARCH model is really a good estimator of VaR and ES which takes Volatility Clustering into account and provides
+# much accurate results in comparison to Normal Distributions.
