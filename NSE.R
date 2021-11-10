@@ -225,7 +225,7 @@ round(ES8,6)
 round((exp(VaR8)-1),6)
 #-0.014363 
 
-# Let us assume an investor invests Rs.10,00,000 in a NIFTY50 Index Fund, so according to historical GARCH predicted 
+# Let us assume an investor invests Rs.10,00,000 in NIFTY50 Index, so according to historical GARCH predicted 
 #VaR, the maximum amount that the investor can lose on the next trading session within 95% Confidence Level 
 #= 10,00,000 * -0.014363 = 14363/-Rs. 
 
